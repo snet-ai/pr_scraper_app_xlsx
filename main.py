@@ -1,7 +1,5 @@
 import os
 import pandas as pd
-import os
-import pandas as pd
 from requests import Session
 import requests
 from bs4 import BeautifulSoup
