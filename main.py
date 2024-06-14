@@ -17,7 +17,7 @@ from datetime import datetime, timedelta
 directory = './site_to_scraper'
 
 # Emri që kërkohet
-search_name = 'test'
+search_name = 'Fastech'
 
 # File i ri Excel ku do të ruhen rezultatet
 output_file = 'rezultatet.xlsx'
@@ -34,7 +34,7 @@ def search_excel_files(directory, search_name):
                 excel_file = pd.ExcelFile(file_path)
                 for sheet in excel_file.sheet_names:
                     df = pd.read_excel(file_path, sheet_name=sheet)
-                    filtered_df = df[df.apply(lambda row: row.astype(str).str.contains(search_name).any(), axis=1)]
+                    filtered_df = df[df.apply(lambda row: row.astype(str).str.contains(search_name, case=False).any(), axis=1)]
                     if not filtered_df.empty:
                         filtered_df['File'] = filename
                         filtered_df['Sheet'] = sheet
